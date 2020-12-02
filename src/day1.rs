@@ -26,7 +26,7 @@ pub fn part2(input: &str) -> i64 {
     let entries = parse_input(input);
 
     for i in entries.iter() {
-        // Taking the lazy approach here, but this will have issues since we may consider 
+        // Taking the lazy approach here, but this will have issues since we may consider
         // the same number twice
         for j in entries.iter() {
             let target = 2020 - i - j;
