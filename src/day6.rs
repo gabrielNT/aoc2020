@@ -7,10 +7,10 @@ pub fn input_generator(input: &str) -> Vec<(usize, [usize; 26])> {
             let mut answers = [0; 26];
             for c in p.chars() {
                 match c {
-                   'a'..='z' => answers[c as usize - 97] += 1,
-                   '\n' => total += 1,
+                    'a'..='z' => answers[c as usize - 97] += 1,
+                    '\n' => total += 1,
                     _ => panic!("Invalid input!"),
-                } 
+                }
             }
             (total, answers)
         })
@@ -57,16 +57,29 @@ mod tests {
         answers[1] = 1;
         answers[2] = 1;
 
-        assert_eq!(input_generator("abc\n\na\nb\nc"), vec!((1, answers), (3, answers)));
+        assert_eq!(
+            input_generator("abc\n\na\nb\nc"),
+            vec!((1, answers), (3, answers))
+        );
     }
 
     #[test]
     fn test_part1() {
-        assert_eq!(part1(&input_generator("abc\n\na\nb\nc\n\nab\nac\n\na\na\na\na\n\nb")), 11);
+        assert_eq!(
+            part1(&input_generator(
+                "abc\n\na\nb\nc\n\nab\nac\n\na\na\na\na\n\nb"
+            )),
+            11
+        );
     }
 
     #[test]
     fn test_part2() {
-        assert_eq!(part2(&input_generator("abc\n\na\nb\nc\n\nab\nac\n\na\na\na\na\n\nb")), 6);
+        assert_eq!(
+            part2(&input_generator(
+                "abc\n\na\nb\nc\n\nab\nac\n\na\na\na\na\n\nb"
+            )),
+            6
+        );
     }
 }
