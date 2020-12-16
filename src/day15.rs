@@ -2,9 +2,8 @@
 pub fn input_generator(input: &str) -> Vec<usize> {
     input
         .split(",")
-        .map(|l| {
-            l.parse::<usize>().unwrap()
-        }).collect()
+        .map(|l| l.parse::<usize>().unwrap())
+        .collect()
 }
 
 #[aoc(day15, part1)]
@@ -25,9 +24,12 @@ pub fn part2(starting: &Vec<usize>) -> usize {
     play_game(numbers, last_index, ITERATIONS)
 }
 
-
 // Helpers
-fn play_game(mut numbers: Vec<usize>, mut last_index: Vec<Option<usize>>, iterations: usize) -> usize {
+fn play_game(
+    mut numbers: Vec<usize>,
+    mut last_index: Vec<Option<usize>>,
+    iterations: usize,
+) -> usize {
     for (i, n) in numbers.iter().enumerate() {
         last_index[n.to_owned()] = Some(i + 1);
     }
@@ -36,11 +38,11 @@ fn play_game(mut numbers: Vec<usize>, mut last_index: Vec<Option<usize>>, iterat
         match last_index[numbers[j - 1]] {
             Some(last_num) => {
                 numbers.push(j - last_num);
-            },
+            }
             None => {
                 numbers.push(0);
-            },
-        } 
+            }
+        }
         last_index[numbers[j - 1]] = Some(j);
     }
 
